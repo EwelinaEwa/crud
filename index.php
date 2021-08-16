@@ -24,6 +24,7 @@ function whatIsHappening() {
 
 whatIsHappening();
 
+
 // Load you classes
 require_once 'config.php';
 require_once 'classes/DatabaseManager.php';
@@ -32,10 +33,15 @@ require_once 'classes/CardRepository.php';
 $databaseManager = new DatabaseManager($config['host'], $config['user'], $config['password'], $config['dbname']);
 $databaseManager->connect();
 
+
+
 // This example is about a Pokémon card collection
 // Update the naming if you'd like to work with another collection
 $cardRepository = new CardRepository($databaseManager);
-$create = $cardRepository->create();
+$createWorked = $cardRepository->create();
+if (!$createWorked) {
+    $emptyFieldsMessage = "Enter author and title to add the book";
+}
 $cards = $cardRepository->get();
 
 // Load your view

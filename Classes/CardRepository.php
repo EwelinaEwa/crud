@@ -27,12 +27,6 @@ class CardRepository
         }
     }
 
-    public function message($thisMessage)
-    {
-        $this->emptyFieldsMessage = $thisMessage;
-        return $this->emptyFieldsMessage;
-    }
-
     // Get one
     public function find()
     {

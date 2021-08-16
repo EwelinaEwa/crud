@@ -31,11 +31,10 @@
     <br>
     <button type="submit" name="addBook">Add book</button>
 </form>
-    <p>
-        <?php if (isset($_POST) && !$_POST['author']) : ?>
-            <?= $cards->emptyFieldsMessage ?>
-        <?php endif ?>
-    </p>
+        <?php if (!empty($emptyFieldsMessage)) : ?>
+        <p> <?php echo $emptyFieldsMessage; ?> </p>
+        <?php endif; ?>
+
 
 </body>
 </html>
