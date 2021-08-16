@@ -18,7 +18,7 @@
 </ul>
 <br>
 <br>
-<form action="post">Add new book
+<form method="post">Add new book
     <br>
     <br>
     <label for="author">Author</label>
@@ -29,7 +29,7 @@
     <input type="text" name="title" placeholder="Add title of the book">
     <br>
     <br>
-    <button name="addBook">Add book</button>
+    <button type="submit" name="addBook">Add book</button>
 </form>
 
 </body>

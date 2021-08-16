@@ -15,7 +15,13 @@ class CardRepository
 
     public function create()
     {
-
+        if (isset($_POST['addBook'])){
+            $addedAuthor = $_POST['author'];
+            $addedTitle = $_POST['title'];
+            $sql = "INSERT INTO books(Author,Title) VALUES('$addedAuthor','$addedTitle')";
+            $result = $this->databaseManager->connect()->query($sql);
+            return $result;
+        }
     }
 
     // Get one
