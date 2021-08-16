@@ -13,7 +13,8 @@
 
 <ul>
     <?php foreach ($cards as $card) : ?>
-        <li><?= $card['Author'] ?> - <?= $card['Title'] ?> - <?= $card['Read'] ?></li>
+        <li><?= $card['Author'] ?> - <?= $card['Title'] ?> - <?= $card['Read'] ?>
+        <button type="submit" name="edit">Edit</button></li>
     <?php endforeach; ?>
 </ul>
 <br>
