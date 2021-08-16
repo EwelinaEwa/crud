@@ -30,6 +30,7 @@ require_once 'config.php';
 require_once 'classes/DatabaseManager.php';
 require_once 'classes/CardRepository.php';
 
+
 $databaseManager = new DatabaseManager($config['host'], $config['user'], $config['password'], $config['dbname']);
 $databaseManager->connect();
 
@@ -39,7 +40,7 @@ $databaseManager->connect();
 // Update the naming if you'd like to work with another collection
 $cardRepository = new CardRepository($databaseManager);
 $createWorked = $cardRepository->create();
-if (!$createWorked) {
+if (!$createWorked && isset($_POST['addBook'])) {
     $emptyFieldsMessage = "Enter author and title to add the book";
 }
 $cards = $cardRepository->get();

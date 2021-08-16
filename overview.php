@@ -32,7 +32,7 @@
     <button type="submit" name="addBook">Add book</button>
 </form>
         <?php if (!empty($emptyFieldsMessage)) : ?>
-        <p> <?php echo $emptyFieldsMessage; ?> </p>
+        <p> <?php echo $emptyFieldsMessage ?> </p>
         <?php endif; ?>
 
 
