@@ -14,22 +14,19 @@
 <ul>
     <?php foreach ($cards as $card) : ?>
         <li><?= $card['Author'] ?> - <?= $card['Title'] ?> - <?= $card['Read'] ?>
-        <button type="submit" name="edit">Edit</button></li>
+        <button onclick="window.location.href='edit.php'" type="submit" name="edit">Edit</button></li>
     <?php endforeach; ?>
 </ul>
 <br>
 <br>
 <form method="post">Add new book
-    <br>
-    <br>
+    <br><br>
     <label for="author">Author</label>
     <input type="text" name="author" placeholder="Add author of the book">
-    <br>
-    <br>
+    <br><br>
     <label for="title">Title</label>
     <input type="text" name="title" placeholder="Add title of the book">
-    <br>
-    <br>
+    <br><br>
     <button type="submit" name="addBook">Add book</button>
 </form>
         <?php if (!empty($emptyFieldsMessage)) : ?>
