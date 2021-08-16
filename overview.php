@@ -5,17 +5,32 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Goodcard - track your collection of Pokémon cards</title>
+    <title>Goodreads - track which books you already read</title>
 </head>
 <body>
 
-<h1>Goodcard - track your collection of Pokémon cards</h1>
+<h1>Goodreads - track which books you already read</h1>
 
 <ul>
     <?php foreach ($cards as $card) : ?>
-        <li><?= $card['name'] ?></li>
+        <li><?= $card['Author'] ?> - <?= $card['Title'] ?> - <?= $card['Read'] ?></li>
     <?php endforeach; ?>
 </ul>
+<br>
+<br>
+<form action="post">Add new book
+    <br>
+    <br>
+    <label for="author">Author</label>
+    <input type="text" name="author" placeholder="Add author of the book">
+    <br>
+    <br>
+    <label for="title">Title</label>
+    <input type="text" name="title" placeholder="Add title of the book">
+    <br>
+    <br>
+    <button name="addBook">Add book</button>
+</form>
 
 </body>
 </html>
