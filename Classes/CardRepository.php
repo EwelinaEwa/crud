@@ -6,6 +6,7 @@
 class CardRepository
 {
     private $databaseManager;
+    public string $emptyFieldsMessage;
 
     // This class needs a database connection to function
     public function __construct(DatabaseManager $databaseManager)
@@ -15,13 +16,21 @@ class CardRepository
 
     public function create()
     {
-        if (isset($_POST['addBook'])){
+        if (isset($_POST['addBook']) && !empty($_POST['author'])  && !empty($_POST['title'])){
             $addedAuthor = $_POST['author'];
             $addedTitle = $_POST['title'];
             $sql = "INSERT INTO books(Author,Title) VALUES('$addedAuthor','$addedTitle')";
-            $result = $this->databaseManager->connect()->query($sql);
+            $result = $this->databaseManager->connect()->query($sql)->fetchAll();
             return $result;
+        } else {
+            $this->message("Enter author & title.");
         }
+    }
+
+    public function message($thisMessage)
+    {
+        $this->emptyFieldsMessage = $thisMessage;
+        return $this->emptyFieldsMessage;
     }
 
     // Get one
