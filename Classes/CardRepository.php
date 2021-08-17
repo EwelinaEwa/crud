@@ -30,7 +30,9 @@ class CardRepository
     // Get one
     public function find()
     {
-
+        if (isset($_POST["edit"])) {
+            $index = (int) $_POST["edit"];
+        }
     }
 
     // Get all

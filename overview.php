@@ -10,13 +10,15 @@
 <body>
 
 <h1>Goodreads - track which books you already read</h1>
-
-<ul>
-    <?php foreach ($cards as $card) : ?>
-        <li><?= $card['Author'] ?> - <?= $card['Title'] ?> - <?= $card['Read'] ?>
-        <button onclick="window.location.href='edit.php'" type="submit" name="edit">Edit</button></li>
-    <?php endforeach; ?>
-</ul>
+<form action="edit.php" method="post">
+    <ul>
+        <?php foreach ($cards as $card) : ?>
+            <li><?= $card['Author'] ?> - <?= $card['Title'] ?> - <?= $card['Read'] ?>
+            <button type="submit" name="edit" value="<?= $card['Index'] ?>">Edit</button onclick="window.location.href='index.php'">
+            <?php var_dump($card)?></li>
+        <?php endforeach; ?>
+    </ul>
+</form>
 <br>
 <br>
 <form method="post">Add new book
