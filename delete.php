@@ -32,36 +32,31 @@ error_reporting(E_ALL);
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit</title>
+    <title>Delete</title>
 </head>
 <body>
 
 
-<h1>Edit the book data:</h1>
+<h1>Delete the book</h1>
 
 
 <form action="" method="post">
-    <label for="authorEdit">Author</label>
-    <input type="text" name="authorEdit" placeholder="<?= $_GET['author'] ?>">
+    <label for="authorEdit">Author: <?= $_GET['author'] ?></label>
     <br><br>
-    <label for="titleEdit">Title</label>
-    <input type="text" name="titleEdit" placeholder="<?= $_GET['title'] ?>">
+    <label for="titleEdit">Title: <?= $_GET['title'] ?></label>
     <br><br>
-    <label for="readEdit">Read</label>
-    <input type="text" name="readEdit" placeholder="<?= $_GET['read'] ?>">
+    <label for="readEdit">Read: <?= $_GET['read'] ?></label>
     <br><br>
-    <button type="submit" name="save">Save</button>
+    <button type="submit" name="delete">Delete</button>
 
     <?php
-    if (isset($_POST['save'])) {
-        if (isset($_POST['save']) && !empty($_POST['authorEdit']) && !empty($_POST['titleEdit']) && !empty($_POST['readEdit'])) {
-            $cardRepository->update($_POST['authorEdit'], $_POST['titleEdit'], $_POST['readEdit'], $_GET['title']);
-            echo "Success!";
+    if (isset($_POST['delete'])) {
+            $cardRepository->delete($_GET['title']);
+            echo "Deleted!";
             ?> <br> <a href="index.php"> Go back </a>
             <?php
         } else {
-            echo "Fill in all the fields.";
-        }
+            echo "Something went wrong.";
     }
     ?>
 

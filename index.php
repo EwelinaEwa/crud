@@ -46,14 +46,18 @@ if (!$createWorked && isset($_POST['addBook'])) {
 }
 
 $cards = $cardRepository->get();
-$find = $cardRepository->find();
+//$find = $cardRepository->find();
 
 if (empty($_GET)){
     require 'overview.php';
-} else {
+} else if ( $_GET['action'] == 'edit')
+{
     require 'edit.php';
 }
-
+else
+{
+    require 'delete.php';
+}
 
 
 

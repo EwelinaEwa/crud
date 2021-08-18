@@ -19,6 +19,7 @@ class CardRepository
         if (isset($_POST['addBook']) && !empty($_POST['author'])  && !empty($_POST['title'])){
             $addedAuthor = $_POST['author'];
             $addedTitle = $_POST['title'];
+
             $sql = "INSERT INTO books(Author,Title) VALUES('$addedAuthor','$addedTitle')";
             $result = $this->databaseManager->connect()->query($sql)->fetchAll();
             return $result;
@@ -30,19 +31,14 @@ class CardRepository
     // Get one
     public function find()
     {
-        if (isset($_GET["edit"]) && $_POST["submitSearch"]) {
-
-            $author = $_GET["edit"];
-            $bookTitle = $_POST["bookTitle"];
-            $sql = "SELECT * FROM books WHERE Author=\"$author\" AND Title=\"$bookTitle\"";
-            $result = $this->databaseManager->connection->query($sql)->fetchAll();
-
-            echo "test me";
-            var_dump($result);
-            return $result;
-
-
-        }
+//        if (isset($_GET["edit"]) && $_POST["submitSearch"]) {
+//            $author = $_GET["edit"];
+//            $bookTitle = $_POST["bookTitle"];
+//            $sql = "SELECT * FROM books WHERE Author=\"$author\" AND Title=\"$bookTitle\"";
+//            $result = $this->databaseManager->connection->query($sql)->fetchAll();
+//            var_dump($result);
+//            return $result;
+//        }
     }
 
     // Get all
@@ -58,15 +54,18 @@ class CardRepository
         // return $this->databaseManager->connection-> (runYourQueryHere)
     }
 
-    public function update()
+    public function update($authorEdit, $titleEdit, $readEdit, $oldTitle)
     {
-
+        $sql = "UPDATE books SET Author=\"{$authorEdit}\", Title=\"{$titleEdit}\", Already_read=\"{$readEdit}\" WHERE Title=\"{$oldTitle}\"";
+        var_dump($sql);
+        $this->databaseManager->connection->query($sql);
 
     }
 
-    public function delete()
+    public function delete($oldTitle)
     {
-
+        $sql = "DELETE FROM books WHERE Title=('$oldTitle');";
+        $this->databaseManager->connection->query($sql);
     }
 
 }
