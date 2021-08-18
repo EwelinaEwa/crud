@@ -50,12 +50,9 @@ $cards = $cardRepository->get();
 
 if (empty($_GET)){
     require 'overview.php';
-} else if ( $_GET['action'] == 'edit')
-{
+} else if ( $_GET['action'] == 'edit') {
     require 'edit.php';
-}
-else
-{
+} else {
     require 'delete.php';
 }
 

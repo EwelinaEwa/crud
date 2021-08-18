@@ -20,7 +20,7 @@ error_reporting(E_ALL);
 //}
 //
 //whatIsHappening();
-
+//
 //session_start();
 ?>
 
@@ -51,13 +51,13 @@ error_reporting(E_ALL);
 
     <?php
     if (isset($_POST['delete'])) {
-            $cardRepository->delete($_GET['title']);
-            echo "Deleted!";
-            ?> <br> <a href="index.php"> Go back </a>
-            <?php
-        } else {
-            echo "Something went wrong.";
-    }
+        var_dump($_POST['delete']);
+        var_dump($_GET['title']);
+        $cardRepository->delete($_GET['title']);
+        echo "Deleted!";
+        ?> <br> <a href="index.php"> Go back </a>
+        <?php
+        }
     ?>
 
 </form>

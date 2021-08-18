@@ -14,7 +14,7 @@
         <?php foreach ($cards as $card) : ?>
             <li><?= $card['Author'] ?> - <?= $card['Title'] ?> - <?= $card['Already_read'] ?>
             <a href="<?= 'index.php/?author='.$card['Author'].'&title='.$card['Title'].'&read='.$card['Already_read'].'&action=edit'?>" value="<?= $card['Book_index'] ?>">Edit</a>
-            <a href="<?= 'delete.php/?author='.$card['Author'].'&title='.$card['Title'].'&read='.$card['Already_read'].'&action=delete'?>" value="<?= $card['Book_index'] ?>">Delete</a>
+            <a href="<?= 'index.php/?author='.$card['Author'].'&title='.$card['Title'].'&read='.$card['Already_read'].'&action=delete'?>" value="<?= $card['Book_index'] ?>">Delete</a>
 <!--            --><?php //var_dump($card)?><!--</li>-->
         <?php endforeach; ?>
     </ul>

@@ -5,8 +5,7 @@
 // This technique is called the repository pattern
 class CardRepository
 {
-    private $databaseManager;
-    public string $emptyFieldsMessage;
+    private DatabaseManager $databaseManager;
 
     // This class needs a database connection to function
     public function __construct(DatabaseManager $databaseManager)
@@ -16,15 +15,15 @@ class CardRepository
 
     public function create()
     {
-        if (isset($_POST['addBook']) && !empty($_POST['author'])  && !empty($_POST['title'])){
+        if (isset($_POST['addBook']) && $_POST['author']  && $_POST['title']){
             $addedAuthor = $_POST['author'];
             $addedTitle = $_POST['title'];
 
             $sql = "INSERT INTO books(Author,Title) VALUES('$addedAuthor','$addedTitle')";
-            $result = $this->databaseManager->connect()->query($sql)->fetchAll();
-            return $result;
+            $this->databaseManager->connection->query($sql);
+            return true;
         } else {
-            $this->message("Enter author & title.");
+            return false;
         }
     }
 
@@ -47,7 +46,7 @@ class CardRepository
         // TODO: replace dummy data by real one
 
         $sql = "SELECT * FROM books";
-        $result = $this->databaseManager->connect()->query($sql);
+        $result = $this->databaseManager->connection->query($sql);
         return $result;
 
         // We get the database connection first, so we can apply our queries with it
@@ -57,14 +56,13 @@ class CardRepository
     public function update($authorEdit, $titleEdit, $readEdit, $oldTitle)
     {
         $sql = "UPDATE books SET Author=\"{$authorEdit}\", Title=\"{$titleEdit}\", Already_read=\"{$readEdit}\" WHERE Title=\"{$oldTitle}\"";
-        var_dump($sql);
         $this->databaseManager->connection->query($sql);
 
     }
 
     public function delete($oldTitle)
     {
-        $sql = "DELETE FROM books WHERE Title=('$oldTitle');";
+        $sql = "DELETE FROM books WHERE Title=\"{$oldTitle}\";";
         $this->databaseManager->connection->query($sql);
     }
 
