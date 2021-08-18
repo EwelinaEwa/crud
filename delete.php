@@ -54,10 +54,8 @@ error_reporting(E_ALL);
         var_dump($_POST['delete']);
         var_dump($_GET['title']);
         $cardRepository->delete($_GET['title']);
-        echo "Deleted!";
-        ?> <br> <a href="index.php"> Go back </a>
-        <?php
-        }
+        header('Location: index.php');
+    }
     ?>
 
 </form>

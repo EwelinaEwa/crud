@@ -56,11 +56,7 @@ error_reporting(E_ALL);
     if (isset($_POST['save'])) {
         if (isset($_POST['save']) && !empty($_POST['authorEdit']) && !empty($_POST['titleEdit']) && !empty($_POST['readEdit'])) {
             $cardRepository->update($_POST['authorEdit'], $_POST['titleEdit'], $_POST['readEdit'], $_GET['title']);
-            echo "Success!";
-            ?> <br> <a href="index.php"> Go back </a>
-            <?php
-        } else {
-            echo "Fill in all the fields.";
+            header('Location: index.php');
         }
     }
     ?>
