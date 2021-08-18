@@ -30,8 +30,18 @@ class CardRepository
     // Get one
     public function find()
     {
-        if (isset($_POST["edit"])) {
-            $index = (int) $_POST["edit"];
+        if (isset($_GET["edit"]) && $_POST["submitSearch"]) {
+
+            $author = $_GET["edit"];
+            $bookTitle = $_POST["bookTitle"];
+            $sql = "SELECT * FROM books WHERE Author=\"$author\" AND Title=\"$bookTitle\"";
+            $result = $this->databaseManager->connection->query($sql)->fetchAll();
+
+            echo "test me";
+            var_dump($result);
+            return $result;
+
+
         }
     }
 
@@ -50,6 +60,7 @@ class CardRepository
 
     public function update()
     {
+
 
     }
 

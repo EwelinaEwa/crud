@@ -24,6 +24,7 @@ function whatIsHappening() {
 
 whatIsHappening();
 
+session_start();
 
 // Load you classes
 require_once 'config.php';
@@ -43,8 +44,18 @@ $createWorked = $cardRepository->create();
 if (!$createWorked && isset($_POST['addBook'])) {
     $emptyFieldsMessage = "Enter author and title to add the book";
 }
+
 $cards = $cardRepository->get();
+$find = $cardRepository->find();
+
+if (empty($_GET)){
+    require 'overview.php';
+} else {
+    require 'edit.php';
+}
+
+
+
 
 // Load your view
 // Tip: you can load this dynamically and based on a variable, if you want to load another view
-require 'overview.php';
